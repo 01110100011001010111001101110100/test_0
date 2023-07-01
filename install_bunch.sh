@@ -1,12 +1,23 @@
 #!/bin/bash
 
-sudo apt-get -y install breeze
+sudo apt-get update  -y
+sudo apt-get upgrade -y
+
+
+# Install the apps I use
+sudo apt-get -y install crontab
+sudo apt-get -y install sayonara
+sudo apt-get -y install neovim
+sudo apt-get -y install tmux
+sudo apt-get -y install kitty
+sudo apt-get -y install zsh
 sudo apt-get -y install gnome-shell-extension-manager
 sudo apt-get -y install expect
 sudo apt-get -y install gnome-tweaks
 sudo apt-get -y install build-essential
 sudo apt-get -y install python3
 sudo apt-get -y install python3-venv
+sudo apt-get -y install python3-pip
 sudo apt-get -y install git
 sudo apt-get -y install make
 sudo apt-get -y install p7zip-full
@@ -22,23 +33,47 @@ sudo apt-get -y install ffmpeg
 sudo apt-get -y install wget
 sudo apt-get -y install gnome-shell-extensions
 sudo apt-get -y install net-tools
-sudo apt-get -y install python3-pip
 sudo apt-get -y install libfl-dev
 sudo apt-get -y install libncursesw5
 sudo apt-get -y install device-tree-compiler
+
+
+# Install themes, fonts and icons
+sudo apt-get -y install breeze
 sudo apt-get -y install adwaita-icon-theme-full
-sudo apt-get -y install yaru-theme-gtk yaru-theme-sound yaru-theme-gnome-shell yaru-theme-icon yaru-theme-unity
+sudo apt-get -y install yaru-theme-gtk 
+sudo apt-get -y install yaru-theme-sound
+sudo apt-get -y install yaru-theme-gnome-shell
+sudo apt-get -y install yaru-theme-icon
+sudo apt-get -y install yaru-theme-unity
+# Install a Nerd Font
+echo "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip"
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
+unzip DroidSansMono.zip -d ~/.fonts
+fc-cache -fv
+rm JetBrainsMono.zip
 
 
-# Intel GPU
+# Install pip applications
+sudo pip3 install WoeUSB-ng
+
+
+# Install QEMU
+sudo apt-get -y install  qemu-kvm
+sudo apt-get -y install  libvirt-daemon-system
+sudo apt-get -y install  libvirt-clients
+sudo apt-get -y install  bridge-utils
+sudo adduser $USER libvirt
+sudo adduser $USER kvm
+sudo systemctl enable --now libvirtd
+sudo apt-get -y install virt-manager
+
+
+# Intel GPU Tools
 # sudo apt-get -y install intel-gpu-tools
 
 
-sudo apt update
-xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
-gsettings set org.gnome.desktop.background show-desktop-icons false
-gsettings set org.nemo.desktop show-desktop-icons true
-
+# Remove Games
 sudo apt-get -y purge aisleriot
 sudo apt-get -y purge gnome-sudoku
 sudo apt-get -y purge gbrainy
@@ -63,25 +98,42 @@ sudo apt-get -y purge gnome-mines
 sudo apt-get -y purge gnome-nibbles
 sudo apt-get -y purge gnome-mahjongg 
 
+# Remove Unused Apps
 sudo apt-get -y purge nautilus
 sudo apt-get -y purge byobu
 sudo apt-get -y purge gnome-todo
 sudo apt-get -y purge rhythmbox
 sudo apt-get -y purge shotwell
-
-echo "[-] Download fonts [-]"
-echo "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip"
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
-unzip DroidSansMono.zip -d ~/.fonts
-fc-cache -fv
+sudo apt-get -y purge gnome-music
+sudo apt-get -y purge gnome-terminal
 
 
-sudo apt install kitty
-sudo apt install zsh
+# Set nemo default fileexplorer
+xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search
+gsettings set org.gnome.desktop.background show-desktop-icons false
+gsettings set org.nemo.desktop show-desktop-icons true
+
+
+# set default shell
 chsh -s $(which zsh)
 
+
+# set default terminal
+sudo update-alternatives --set x-terminal-emulator "$(which kitty)"
+gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
+
+
+# set locale
+sudo locale-gen en_GB
+sudo locale-gen en_GB.UTF-8
+sudo update-locale
 
 
 # Requires EULA, user interaction
 sudo apt-get -y install ubuntu-restricted-extras
+
+
+reboot
+
+
 
