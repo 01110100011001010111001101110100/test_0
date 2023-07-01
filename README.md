@@ -28,8 +28,13 @@
 5. Edit Gnome Settings
   * Dark mode
   * touch to click
-  * gnome-tweaks > 
+  * gnome-tweaks 
   * RegionFormat > United Kingdom
+  * Mouse Settings
+    * Tap to click
+    * Natural scrolling
   
-  
+6. Login to whatsapp web.
+
+
   

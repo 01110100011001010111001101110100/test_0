@@ -37,7 +37,10 @@ sudo apt-get -y install net-tools
 sudo apt-get -y install libfl-dev
 sudo apt-get -y install libncursesw5
 sudo apt-get -y install device-tree-compiler
-
+# Install green tunnel
+wget https://github.com/SadeghHayeri/GreenTunnel/releases/download/v1.8.3/green-tunnel-debian.zip
+unzip green-tunnel-debian.zip
+sudo apt-get -y install ./green-tunnel_1.7.5_amd64.deb
 
 # Install themes, fonts and icons
 sudo apt-get -y install breeze
