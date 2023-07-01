@@ -15,7 +15,6 @@ sudo apt-get -y install p7zip-rar
 sudo apt-get -y install unrar
 sudo apt-get -y install default-jre
 sudo apt-get -y install alacarte
-sudo apt-get -y install intel-gpu-tools
 sudo apt-get -y install kolourpaint
 sudo apt-get -y install gdb
 sudo apt-get -y install nemo
@@ -30,6 +29,10 @@ sudo apt-get -y install device-tree-compiler
 sudo apt-get -y install ubuntu-restricted-extras
 sudo apt-get -y install adwaita-icon-theme-full
 sudo apt-get -y install yaru-theme-gtk yaru-theme-sound yaru-theme-gnome-shell yaru-theme-icon yaru-theme-unity
+
+
+# Intel GPU
+# sudo apt-get -y install intel-gpu-tools
 
 
 sudo apt update
