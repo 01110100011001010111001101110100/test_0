@@ -10,6 +10,7 @@ sudo apt-get -y install sayonara
 sudo apt-get -y install neovim
 sudo apt-get -y install tmux
 sudo apt-get -y install kitty
+sudo apt-get -y install fzf
 sudo apt-get -y install zsh
 sudo apt-get -y install gnome-shell-extension-manager
 sudo apt-get -y install expect
