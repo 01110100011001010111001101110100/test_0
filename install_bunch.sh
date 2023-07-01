@@ -69,24 +69,6 @@ sudo adduser $USER kvm
 sudo systemctl enable --now libvirtd
 sudo apt-get -y install virt-manager
 
-
-# Install Custom Firefox CSS
-MY_CUSTOM_CSS=https://github.com/hakan-demirli/Firefox_Custom_CSS
-ASDF_FOLDER=$(grep 'Path=' ~/.mozilla/firefox/profiles.ini | sed s/^Path=//)
-if [[ -n $ASDF_FOLDER ]]; then
-  CLONE_PATH=~/.mozilla/firefox/${ASDF_FOLDER}/chrome
-else
-  ASDF_FOLDER=$(grep 'Path=' ~/snap/firefox/common/.mozilla/firefox/profiles.ini | sed s/^Path=//)
-  if [[ -n $ASDF_FOLDER ]]; then
-    CLONE_PATH=~/snap/firefox/common/.mozilla/firefox/${ASDF_FOLDER}/chrome
-  else
-    echo "Unable to find a valid folder name."
-    exit 1
-  fi
-fi
-git clone --depth 1 $MY_CUSTOM_CSS $CLONE_PATH
-
-
 # Intel GPU Tools
 # sudo apt-get -y install intel-gpu-tools
 
@@ -139,7 +121,7 @@ chsh -s $(which zsh)
 # set default terminal
 sudo update-alternatives --set x-terminal-emulator "$(which kitty)"
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
-
+gsettings set org.gnome.desktop.default-applications.terminal exec kitty
 
 # set locale
 sudo locale-gen en_GB
@@ -149,7 +131,9 @@ sudo update-locale
 
 # Run Scripts
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-python3 $SCRIPT_DIR/scripts/n2o.py
+python3 $SCRIPT_DIR/scripts/installation_scripts/n2o.py
+python3 $SCRIPT_DIR/scripts/installation_scripts/ffcss.py
+python3 $SCRIPT_DIR/scripts/installation_scripts/gnome_bks.py restore
 
 
 # Requires EULA, user interaction

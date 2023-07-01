@@ -23,9 +23,13 @@
     * Set `browser.sessionstore.restore_pinned_tabs_on_demand` to true
   * Enable compact mode
     * Customize Toolbar > Density > Compact
-    
+  * Import Sidebery data
+
 5. Edit Gnome Settings
   * Dark mode
   * touch to click
   * gnome-tweaks > 
-    
+  * RegionFormat > United Kingdom
+  
+  
+  
