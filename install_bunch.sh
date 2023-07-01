@@ -26,7 +26,6 @@ sudo apt-get -y install python3-pip
 sudo apt-get -y install libfl-dev
 sudo apt-get -y install libncursesw5
 sudo apt-get -y install device-tree-compiler
-sudo apt-get -y install ubuntu-restricted-extras
 sudo apt-get -y install adwaita-icon-theme-full
 sudo apt-get -y install yaru-theme-gtk yaru-theme-sound yaru-theme-gnome-shell yaru-theme-icon yaru-theme-unity
 
@@ -83,5 +82,6 @@ chsh -s $(which zsh)
 
 
 
-
+# Requires EULA, user interaction
+sudo apt-get -y install ubuntu-restricted-extras
 
